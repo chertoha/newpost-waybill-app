@@ -1,5 +1,7 @@
+import Waybill from "components/Waybill";
+
 const WaybillPage = () => {
-  return <div>Waybill</div>;
+  return <Waybill />;
 };
 
 export default WaybillPage;

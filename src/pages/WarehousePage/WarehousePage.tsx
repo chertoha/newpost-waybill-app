@@ -1,5 +1,7 @@
+import Warehouse from "components/Warehouse";
+
 const WarehousePage = () => {
-  return <div>Warehouse</div>;
+  return <Warehouse />;
 };
 
 export default WarehousePage;
