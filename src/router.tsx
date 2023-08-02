@@ -14,10 +14,10 @@ const routes = [
     path: ROUTES.HOME,
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
-      },
+      // {
+      //   index: true,
+      //   element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
+      // },
       {
         path: ROUTES.WAYBILL,
         element: <WaybillPage />,
