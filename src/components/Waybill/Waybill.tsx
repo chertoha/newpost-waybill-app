@@ -1,14 +1,19 @@
+import WaybillForm from "components/WaybillForm";
+import WaybillInfo from "components/WaybillInfo";
+import WaybillHistory from "components/WaybillHistory";
+
 const Waybill = () => {
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ backgroundColor: "#727d9e" }}>
-        StatusStatusStatusStatusStatus
-        <form style={{ backgroundColor: "#cc4e84" }}>Waybill Form</form>
-        <div style={{ backgroundColor: "#e69443" }}>Waybill Info</div>
+    <div>
+      <h1>Waybill Status</h1>
+      <div style={{ display: "flex" }}>
+        <div style={{ backgroundColor: "#727d9e" }}>
+          StatusStatusStatusStatusStatus
+          <WaybillForm />
+          <WaybillInfo />
+        </div>
+        <WaybillHistory />
       </div>
-      <aside style={{ backgroundColor: "#bc87d6" }}>
-        SidebarSidebarSidebar Sidebar Sidebar
-      </aside>
     </div>
   );
 };
