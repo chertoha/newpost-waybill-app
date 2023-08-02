@@ -1,4 +1,7 @@
-import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
+import Layout from "components/Layout";
+import WarehousePage from "pages/WarehousePage";
+import WaybillPage from "pages/WaybillPage";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 
 export const ROUTES = {
   HOME: "/",
@@ -9,25 +12,21 @@ export const ROUTES = {
 const routes = [
   {
     path: ROUTES.HOME,
-    element: (
-      <div>
-        Home test <Outlet />
-      </div>
-    ),
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
-    //   },
-    //   {
-    //     path: ROUTES.WAYBILL,
-    //     element: <div>WAYBILL</div>,
-    //   },
-    //   {
-    //     path: ROUTES.WAREHOUSE,
-    //     element: <div>WAREHOUSE</div>,
-    //   },
-    // ],
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
+      },
+      {
+        path: ROUTES.WAYBILL,
+        element: <WaybillPage />,
+      },
+      {
+        path: ROUTES.WAREHOUSE,
+        element: <WarehousePage />,
+      },
+    ],
   },
 ];
 
