@@ -1,9 +1,9 @@
 import Layout from "components/Layout";
 import WarehousePage from "pages/WarehousePage";
 import WaybillPage from "pages/WaybillPage";
-// import { createBrowserRouter, Navigate } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
-
+import { createBrowserRouter, Navigate } from "react-router-dom";
+// import { createBrowserRouter } from "react-router-dom";
+console.log("changed 16-10");
 export const ROUTES = {
   HOME: "/",
   WAYBILL: "/waybill",
@@ -15,10 +15,10 @@ const routes = [
     path: ROUTES.HOME,
     element: <Layout />,
     children: [
-      // {
-      //   index: true,
-      //   element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
-      // },
+      {
+        index: true,
+        element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
+      },
       {
         path: ROUTES.WAYBILL,
         element: <WaybillPage />,
