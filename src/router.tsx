@@ -1,7 +1,8 @@
 import Layout from "components/Layout";
 import WarehousePage from "pages/WarehousePage";
 import WaybillPage from "pages/WaybillPage";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+// import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 export const ROUTES = {
   HOME: "/",
