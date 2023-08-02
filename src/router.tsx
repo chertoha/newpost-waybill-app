@@ -6,8 +6,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 export const ROUTES = {
   HOME: "/",
-  WAYBILL: "/waybill",
-  WAREHOUSE: "/warehouse",
+  WAYBILL: "waybill",
+  WAREHOUSE: "warehouse",
 };
 
 const routes = [
