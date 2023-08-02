@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 const waybillValidationPattern = "^[1-9][0-9]{13}$";
@@ -6,7 +7,11 @@ interface IFormElementsWaybill extends HTMLFormControlsCollection {
   waybillNumber: HTMLInputElement;
 }
 
-const WaybillForm = () => {
+interface IWaybillFormProps {
+  onSearch: (value: string) => void;
+}
+
+const WaybillForm: FC<IWaybillFormProps> = ({ onSearch }) => {
   const [waybillNumber, setWaybillNumber] = useState<string>("");
 
   const onWaybillChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +24,7 @@ const WaybillForm = () => {
     const elements = form.elements as IFormElementsWaybill;
     const value = elements.waybillNumber.value;
 
-    console.log(value);
+    onSearch(value);
   };
 
   return (

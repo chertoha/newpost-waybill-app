@@ -1,9 +1,17 @@
+import { FC } from "react";
 import { useGetStatusQuery } from "redux/waybill/waybillApi";
 
-const WaybillInfo = () => {
+interface IWaybillInfoProps {
+  searchedWaybill: string;
+}
+
+const WaybillInfo: FC<IWaybillInfoProps> = ({ searchedWaybill }) => {
   // const { data } = useGetStatusQuery("20700155923660"); // created but not received
   // const { data } = useGetStatusQuery("59000988138658"); // received
-  const { data } = useGetStatusQuery("20700655923660"); // not found
+  // const { data } = useGetStatusQuery("20700655923660"); // not found
+  const { data } = useGetStatusQuery(searchedWaybill, {
+    skip: searchedWaybill ? false : true,
+  });
 
   console.log(data);
 
