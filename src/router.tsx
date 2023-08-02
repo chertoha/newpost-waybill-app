@@ -31,8 +31,10 @@ const routes = [
   },
 ];
 
-const router = createBrowserRouter(routes, {
-  basename: "/newpost-waybill-app",
-});
+// const router = createBrowserRouter(routes, {
+//   basename: "/newpost-waybill-app",
+// });
+
+const router = createBrowserRouter(routes);
 
 export default router;
