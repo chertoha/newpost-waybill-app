@@ -11,23 +11,23 @@ const routes = [
     path: ROUTES.HOME,
     element: (
       <div>
-        Home <Outlet />
+        Home test <Outlet />
       </div>
     ),
-    children: [
-      {
-        index: true,
-        element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
-      },
-      {
-        path: ROUTES.WAYBILL,
-        element: <div>WAYBILL</div>,
-      },
-      {
-        path: ROUTES.WAREHOUSE,
-        element: <div>WAREHOUSE</div>,
-      },
-    ],
+    // children: [
+    //   {
+    //     index: true,
+    //     element: <Navigate to={ROUTES.WAYBILL} replace={true} />,
+    //   },
+    //   {
+    //     path: ROUTES.WAYBILL,
+    //     element: <div>WAYBILL</div>,
+    //   },
+    //   {
+    //     path: ROUTES.WAREHOUSE,
+    //     element: <div>WAREHOUSE</div>,
+    //   },
+    // ],
   },
 ];
 
