@@ -3,6 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
+  console.log(process.env.REACT_APP_NP_API_ENTRY_POINT);
+  console.log(process.env.REACT_APP_NP_API_KEY);
   return (
     <div className="App">
       <header className="App-header">
