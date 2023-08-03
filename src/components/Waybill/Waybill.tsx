@@ -3,11 +3,24 @@ import WaybillInfo from "components/WaybillInfo";
 import WaybillHistory from "components/WaybillHistory";
 import { useState } from "react";
 
+const testInitialHistory = [
+  "20700155923660",
+  "59000988138658",
+  "20450727666448",
+  "11111111111111",
+];
+
 const Waybill = () => {
   const [searchedWaybill, setSearchedWaybill] = useState<string>("");
+  // const [historyList, setHistoryList] = useState<string[]>([]);
+  const [historyList, setHistoryList] = useState<string[]>(testInitialHistory);
 
   const onSearch = (value: string) => {
     setSearchedWaybill(value);
+    setHistoryList((prevState) => [
+      value,
+      ...prevState.filter((item) => item !== value),
+    ]);
   };
 
   return (
@@ -16,10 +29,10 @@ const Waybill = () => {
       <div style={{ display: "flex" }}>
         <div style={{ backgroundColor: "#727d9e" }}>
           StatusStatusStatusStatusStatus
-          <WaybillForm onSearch={onSearch} />
+          <WaybillForm onSearch={onSearch} searchedWaybill={searchedWaybill} />
           <WaybillInfo searchedWaybill={searchedWaybill} />
         </div>
-        <WaybillHistory />
+        <WaybillHistory list={historyList} onSearch={onSearch} />
       </div>
     </div>
   );
