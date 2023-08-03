@@ -1,19 +1,29 @@
 import WaybillForm from "components/WaybillForm";
 import WaybillInfo from "components/WaybillInfo";
 import WaybillHistory from "components/WaybillHistory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { StorageService } from "services/StorageService";
 
-const testInitialHistory = [
-  "20700155923660",
-  "59000988138658",
-  "20450727666448",
-  "11111111111111",
-];
+const storage = new StorageService<string[]>("waybillHistory");
+
+// const testInitialHistory = [
+//   "20700155923660",
+//   "59000988138658",
+//   "20450727666448",
+//   "11111111111111",
+// ];
 
 const Waybill = () => {
   const [searchedWaybill, setSearchedWaybill] = useState<string>("");
   // const [historyList, setHistoryList] = useState<string[]>([]);
-  const [historyList, setHistoryList] = useState<string[]>(testInitialHistory);
+  // const [historyList, setHistoryList] = useState<string[]>(testInitialHistory);
+  const [historyList, setHistoryList] = useState<string[]>(
+    () => storage.get() || []
+  );
+
+  useEffect(() => {
+    storage.set(historyList);
+  }, [historyList]);
 
   const onSearch = (value: string) => {
     setSearchedWaybill(value);
