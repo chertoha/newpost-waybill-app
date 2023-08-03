@@ -17,3 +17,23 @@ export type WaybillStatus = {
   errors: string[];
   warnings: string[];
 };
+
+export interface ISettlement {
+  Ref: string;
+  Description: string;
+  AreaDescription: string;
+  RegionsDescription: string;
+  SettlementTypeDescription: string;
+}
+
+export type WarehouseSettlements = {
+  data: ISettlement[];
+  errors: string[];
+  warnings: string[];
+  success: boolean;
+};
+
+export interface ISelectItem {
+  id: string;
+  title: string;
+}
