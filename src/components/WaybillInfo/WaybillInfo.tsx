@@ -6,11 +6,15 @@ interface IWaybillInfoProps {
 }
 
 const WaybillInfo: FC<IWaybillInfoProps> = ({ searchedWaybill }) => {
-  const { data } = useGetStatusQuery(searchedWaybill, {
+  const { data, isFetching } = useGetStatusQuery(searchedWaybill, {
     skip: searchedWaybill ? false : true,
   });
 
   console.log(data);
+
+  if (isFetching) {
+    return <div>FETCHING.......</div>;
+  }
 
   if (!data) return null;
 
