@@ -1,10 +1,12 @@
 import Select from "components/UIKit/Select";
 import { ChangeEvent, useState } from "react";
 import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
+import { ISelectItem } from "types/types";
 import { settlementsListTransform } from "utils/settlementsListTransform";
 
 const Warehouse = () => {
   const [selectSearch, setSelectSearch] = useState<string>("");
+  const [selectValue, setSelectValue] = useState<ISelectItem | null>(null);
 
   const { data: response } = useGetSettlementsQuery(selectSearch);
 
@@ -14,13 +16,20 @@ const Warehouse = () => {
     setSelectSearch(value);
   };
 
+  const onSelectItemClick = (value: ISelectItem) => {
+    setSelectValue(value);
+    setSelectSearch(value.title);
+    // console.log(id);
+  };
+
   if (!response) return null;
 
   const settlements = selectSearch
     ? settlementsListTransform(response.data)
     : [];
 
-  console.log(response);
+  console.log(selectValue);
+  // console.log(response);
   return (
     <div>
       <h1>Список відділень</h1>
@@ -29,6 +38,7 @@ const Warehouse = () => {
           list={settlements}
           value={selectSearch}
           onSelectChange={onSelectChange}
+          onSelectItemClick={onSelectItemClick}
         />
         <div style={{ backgroundColor: "#1fa3a1" }}>
           <ul>
