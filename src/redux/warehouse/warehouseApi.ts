@@ -2,11 +2,7 @@ import { createApi } from "@reduxjs/toolkit/query/react";
 import { api, BASE_URL, warehouseSettlementsRequest } from "services/api";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import type { AxiosRequestConfig, AxiosError } from "axios";
-import {
-  WarehouseSettlements,
-  WaybillStatus,
-  WaybillStatusDefaultResponse,
-} from "types/types";
+import { WarehouseSettlements } from "types/types";
 
 const axiosBaseQuery =
   (
@@ -51,26 +47,6 @@ export const warehouseApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    // getStatus: builder.query<WaybillStatus, string>({
-    //   query: (number) => ({
-    //     url: "",
-    //     method: "POST",
-    //     data: waybillDataRequest(number),
-    //   }),
-    //   transformResponse: (
-    //     response: WaybillStatusDefaultResponse
-    //   ): WaybillStatus => {
-    //     const { success, data, errors, warnings } = response;
-    //     // console.log(response);
-    //     return {
-    //       success,
-    //       waybill: data[0],
-    //       errors,
-    //       warnings,
-    //     };
-    //   },
-    // }),
-
     getSettlements: builder.query<WarehouseSettlements, string>({
       query: (search) => ({
         url: "",
