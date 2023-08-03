@@ -4,27 +4,30 @@ import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
 import { settlementsListTransform } from "utils/settlementsListTransform";
 
 const Warehouse = () => {
-  const [selectValue, setSelectValue] = useState<string>("");
+  const [selectSearch, setSelectSearch] = useState<string>("");
 
-  const { data: response } = useGetSettlementsQuery(selectValue);
+  const { data: response } = useGetSettlementsQuery(selectSearch);
 
   const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setSelectValue(e.target.value);
+    const value = e.target.value;
+    console.log(value);
+    setSelectSearch(value);
   };
 
   if (!response) return null;
 
-  const settlements = settlementsListTransform(response.data);
+  const settlements = selectSearch
+    ? settlementsListTransform(response.data)
+    : [];
 
-  // console.log(response);
+  console.log(response);
   return (
     <div>
       <h1>Список відділень</h1>
       <div style={{ display: "flex" }}>
         <Select
           list={settlements}
-          value={selectValue}
+          value={selectSearch}
           onSelectChange={onSelectChange}
         />
         <div style={{ backgroundColor: "#1fa3a1" }}>

@@ -1,6 +1,5 @@
 import { ChangeEvent, FC } from "react";
 import { ISelectItem } from "types/types";
-const debounce = require("lodash.debounce");
 
 interface ISelectProps {
   list: ISelectItem[];
@@ -11,12 +10,7 @@ interface ISelectProps {
 const Select: FC<ISelectProps> = ({ list, value, onSelectChange }) => {
   return (
     <label>
-      <input
-        type="text"
-        name="city"
-        value={value}
-        onChange={debounce(onSelectChange, 200)}
-      />
+      <input type="text" name="city" value={value} onChange={onSelectChange} />
       <ul style={{ backgroundColor: "#7188a8" }}>
         {list.map(({ id, title }) => (
           <li key={id}>
