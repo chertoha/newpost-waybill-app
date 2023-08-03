@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-const waybillValidationPattern = "^[1-9][0-9]{13}$";
+// const waybillValidationPattern = "^[1-9][0-9]{13}$";
 
 interface IFormElementsWaybill extends HTMLFormControlsCollection {
   waybillNumber: HTMLInputElement;
