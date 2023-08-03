@@ -1,22 +1,11 @@
+import Select from "components/UIKit/Select";
+
 const Warehouse = () => {
   return (
     <div>
       <h1>Список відділень</h1>
       <div style={{ display: "flex" }}>
-        <label>
-          <input type="text" name="city" />
-          <ul style={{ backgroundColor: "#7188a8" }}>
-            <li>
-              <button type="button">city 1</button>
-            </li>
-            <li>
-              <button type="button">city 2</button>
-            </li>
-            <li>
-              <button type="button">city 3</button>
-            </li>
-          </ul>
-        </label>
+        <Select />
         <div style={{ backgroundColor: "#1fa3a1" }}>
           <ul>
             <li>Warehouse 1</li>
