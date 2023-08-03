@@ -37,7 +37,7 @@ const Waybill = () => {
 
   return (
     <div>
-      <h1>Waybill Status</h1>
+      <h1>Перевірити статус ТТН</h1>
       <div style={{ display: "flex" }}>
         <div style={{ backgroundColor: "#727d9e" }}>
           StatusStatusStatusStatusStatus
