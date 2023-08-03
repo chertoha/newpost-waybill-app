@@ -1,16 +1,16 @@
+import { FC } from "react";
 import WaybillListItem from "./WaybillListItem";
 
-const WaybillList = () => {
-  const list = [
-    "20400048799002",
-    "20400048799003",
-    "20400048799004",
-    "20400048799005",
-  ];
+interface IWaybillListProps {
+  list: string[];
+  onSearch: (value: string) => void;
+}
+
+const WaybillList: FC<IWaybillListProps> = ({ list, onSearch }) => {
   return (
     <ul>
       {list.map((item) => (
-        <WaybillListItem key={item} value={item} />
+        <WaybillListItem key={item} value={item} onSearch={onSearch} />
       ))}
     </ul>
   );

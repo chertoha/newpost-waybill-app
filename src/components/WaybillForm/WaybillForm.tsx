@@ -1,18 +1,23 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-// const waybillValidationPattern = "^[1-9][0-9]{13}$";
+// const waybillValidationPattern = "^[1-9][0-9]{13}$";s
 
 interface IFormElementsWaybill extends HTMLFormControlsCollection {
   waybillNumber: HTMLInputElement;
 }
 
 interface IWaybillFormProps {
+  searchedWaybill: string;
   onSearch: (value: string) => void;
 }
 
-const WaybillForm: FC<IWaybillFormProps> = ({ onSearch }) => {
-  const [waybillNumber, setWaybillNumber] = useState<string>("");
+const WaybillForm: FC<IWaybillFormProps> = ({ searchedWaybill, onSearch }) => {
+  const [waybillNumber, setWaybillNumber] = useState<string>(searchedWaybill);
+
+  useEffect(() => {
+    setWaybillNumber(searchedWaybill);
+  }, [searchedWaybill]);
 
   const onWaybillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setWaybillNumber(e.target.value);
@@ -36,7 +41,7 @@ const WaybillForm: FC<IWaybillFormProps> = ({ onSearch }) => {
           name="waybillNumber"
           required
           // pattern={waybillValidationPattern}
-          title="Waybill number may contain 10 digits"
+          title="Waybill number may contain 10 digits and cannot start from zero"
           placeholder="ТТН"
           value={waybillNumber}
           onChange={onWaybillChange}
