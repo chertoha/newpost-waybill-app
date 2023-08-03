@@ -1,17 +1,20 @@
-const Select = () => {
+import { FC } from "react";
+import { ISelectItem } from "types/types";
+
+interface ISelectProps {
+  list: ISelectItem[];
+}
+
+const Select: FC<ISelectProps> = ({ list }) => {
   return (
     <label>
       <input type="text" name="city" />
       <ul style={{ backgroundColor: "#7188a8" }}>
-        <li>
-          <button type="button">city 1</button>
-        </li>
-        <li>
-          <button type="button">city 2</button>
-        </li>
-        <li>
-          <button type="button">city 3</button>
-        </li>
+        {list.map(({ id, title }) => (
+          <li key={id}>
+            <button type="button">{title}</button>
+          </li>
+        ))}
       </ul>
     </label>
   );

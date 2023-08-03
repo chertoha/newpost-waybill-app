@@ -1,11 +1,20 @@
 import Select from "components/UIKit/Select";
+import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
+import { settlementsListTransform } from "utils/settlementsListTransform";
 
 const Warehouse = () => {
+  const { data: response } = useGetSettlementsQuery("ки");
+  console.log(response);
+
+  if (!response) return null;
+
+  const settlements = settlementsListTransform(response.data);
+
   return (
     <div>
       <h1>Список відділень</h1>
       <div style={{ display: "flex" }}>
-        <Select />
+        <Select list={settlements} />
         <div style={{ backgroundColor: "#1fa3a1" }}>
           <ul>
             <li>Warehouse 1</li>
