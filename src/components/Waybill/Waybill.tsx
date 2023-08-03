@@ -15,8 +15,6 @@ const storage = new StorageService<string[]>("waybillHistory");
 
 const Waybill = () => {
   const [searchedWaybill, setSearchedWaybill] = useState<string>("");
-  // const [historyList, setHistoryList] = useState<string[]>([]);
-  // const [historyList, setHistoryList] = useState<string[]>(testInitialHistory);
   const [historyList, setHistoryList] = useState<string[]>(
     () => storage.get() || []
   );
@@ -33,6 +31,10 @@ const Waybill = () => {
     ]);
   };
 
+  const clearHistory = () => {
+    setHistoryList([]);
+  };
+
   return (
     <div>
       <h1>Waybill Status</h1>
@@ -42,7 +44,11 @@ const Waybill = () => {
           <WaybillForm onSearch={onSearch} searchedWaybill={searchedWaybill} />
           <WaybillInfo searchedWaybill={searchedWaybill} />
         </div>
-        <WaybillHistory list={historyList} onSearch={onSearch} />
+        <WaybillHistory
+          list={historyList}
+          onSearch={onSearch}
+          clearHistory={clearHistory}
+        />
       </div>
     </div>
   );

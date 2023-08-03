@@ -1,8 +1,5 @@
 import { FC, useEffect } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { StorageService } from "services/StorageService";
-
-// const storage = new StorageService<string>("search");
 
 // const waybillValidationPattern = "^[1-9][0-9]{13}$";s
 
@@ -16,23 +13,14 @@ interface IWaybillFormProps {
 }
 
 const WaybillForm: FC<IWaybillFormProps> = ({ searchedWaybill, onSearch }) => {
-  // const [waybillNumber, setWaybillNumber] = useState<string>(
-  //   () => storage.get() || searchedWaybill
-  // );
   const [waybillNumber, setWaybillNumber] = useState<string>(searchedWaybill);
 
   useEffect(() => {
-    // console.log(storage.get() || searchedWaybill);
-    // if (searchedWaybill) {
-    //   storage.set(searchedWaybill);
-    //   setWaybillNumber(searchedWaybill);
-    // }
     setWaybillNumber(searchedWaybill);
   }, [searchedWaybill]);
 
   const onWaybillChange = (e: ChangeEvent<HTMLInputElement>) => {
     setWaybillNumber(e.target.value);
-    // storage.set(e.target.value);
   };
 
   const onSubmit = (e: FormEvent) => {
