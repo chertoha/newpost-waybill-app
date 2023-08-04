@@ -22,7 +22,6 @@ export interface ISettlement {
   Ref: string;
   Description: string;
   AreaDescription: string;
-  RegionsDescription: string;
   SettlementTypeDescription: string;
 }
 
@@ -37,3 +36,20 @@ export interface ISelectItem {
   id: string;
   title: string;
 }
+
+export interface IWarehouse {
+  Ref: string;
+  Description: string;
+}
+
+export type WarehouseResponse = {
+  data: IWarehouse[];
+  errors: string[];
+  warnings: string[];
+  success: boolean;
+};
+
+export type WarehouseRequest = {
+  cityRef: string | null;
+  page?: string;
+};
