@@ -56,7 +56,10 @@ input {
 
 a {
   text-decoration: none;
+  transition: color ${(p) => p.theme.transitions.default};
 }
+
+
 
 button {
   cursor: pointer;
