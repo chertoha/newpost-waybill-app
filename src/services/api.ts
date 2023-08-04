@@ -1,4 +1,5 @@
 import axios from "axios";
+import { WarehouseRequest } from "types/types";
 
 const BASE_URL = process.env.REACT_APP_NP_API_ENTRY_POINT;
 const API_KEY = process.env.REACT_APP_NP_API_KEY;
@@ -17,16 +18,40 @@ const waybillDataRequest = (number: string) => ({
   },
 });
 
+// const warehouseSettlementsRequest = (search: string) => ({
+//   apiKey: API_KEY,
+//   modelName: "Address",
+//   calledMethod: "getSettlements",
+//   methodProperties: {
+//     Page: "1",
+//     Warehouse: "1",
+//     FindByString: search,
+//     Limit: "20",
+//   },
+// });
+
 const warehouseSettlementsRequest = (search: string) => ({
   apiKey: API_KEY,
   modelName: "Address",
-  calledMethod: "getSettlements",
+  calledMethod: "getCities",
+  methodProperties: { Page: "1", FindByString: search, Limit: "20" },
+});
+
+const warehouseListRequest = ({ cityRef, page = "1" }: WarehouseRequest) => ({
+  apiKey: API_KEY,
+  modelName: "Address",
+  calledMethod: "getWarehouses",
   methodProperties: {
-    Page: "1",
-    Warehouse: "1",
-    FindByString: search,
-    Limit: "20",
+    CityRef: cityRef,
+    Page: page,
+    Limit: 10,
   },
 });
 
-export { BASE_URL, api, waybillDataRequest, warehouseSettlementsRequest };
+export {
+  BASE_URL,
+  api,
+  waybillDataRequest,
+  warehouseSettlementsRequest,
+  warehouseListRequest,
+};

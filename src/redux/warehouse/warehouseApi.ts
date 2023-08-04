@@ -1,8 +1,17 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { api, BASE_URL, warehouseSettlementsRequest } from "services/api";
+import {
+  api,
+  BASE_URL,
+  warehouseListRequest,
+  warehouseSettlementsRequest,
+} from "services/api";
 import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import type { AxiosRequestConfig, AxiosError } from "axios";
-import { WarehouseSettlements } from "types/types";
+import {
+  WarehouseRequest,
+  WarehouseResponse,
+  WarehouseSettlements,
+} from "types/types";
 
 const axiosBaseQuery =
   (
@@ -54,7 +63,19 @@ export const warehouseApi = createApi({
         data: warehouseSettlementsRequest(search),
       }),
     }),
+
+    getWarehouses: builder.query<WarehouseResponse, WarehouseRequest>({
+      query: (request) => ({
+        url: "",
+        method: "POST",
+        data: warehouseListRequest(request),
+      }),
+    }),
   }),
 });
 
-export const { useGetSettlementsQuery } = warehouseApi;
+export const {
+  useGetSettlementsQuery,
+  useGetWarehousesQuery,
+  useLazyGetWarehousesQuery,
+} = warehouseApi;

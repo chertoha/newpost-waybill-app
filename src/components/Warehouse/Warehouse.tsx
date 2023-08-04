@@ -1,4 +1,5 @@
 import Select from "components/UIKit/Select";
+import WarehouseList from "components/WarehouseList";
 import { ChangeEvent, useState } from "react";
 import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
 import { ISelectItem } from "types/types";
@@ -12,7 +13,6 @@ const Warehouse = () => {
 
   const onSelectChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    console.log(value);
     setSelectSearch(value);
   };
 
@@ -28,7 +28,7 @@ const Warehouse = () => {
     ? settlementsListTransform(response.data)
     : [];
 
-  console.log(selectValue);
+  // console.log(selectValue);
   // console.log(response);
   return (
     <div>
@@ -40,15 +40,7 @@ const Warehouse = () => {
           onSelectChange={onSelectChange}
           onSelectItemClick={onSelectItemClick}
         />
-        <div style={{ backgroundColor: "#1fa3a1" }}>
-          <ul>
-            <li>Warehouse 1</li>
-            <li>Warehouse 2</li>
-            <li>Warehouse 3</li>
-            <li>Warehouse 4</li>
-            <li>Warehouse 5</li>
-          </ul>
-        </div>
+        <WarehouseList cityRef={selectValue ? selectValue.id : null} />
       </div>
     </div>
   );

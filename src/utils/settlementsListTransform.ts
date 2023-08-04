@@ -4,19 +4,11 @@ export const settlementsListTransform = (
   data: ISettlement[]
 ): ISelectItem[] => {
   return data.map(
-    ({
-      Ref,
-      Description,
-      AreaDescription,
-      RegionsDescription,
-      SettlementTypeDescription,
-    }) => ({
+    ({ Ref, Description, AreaDescription, SettlementTypeDescription }) => ({
       id: Ref,
       title: `${SettlementTypeDescription && SettlementTypeDescription + ","} ${
         Description && Description + ","
-      } ${RegionsDescription && RegionsDescription + ","} ${
-        AreaDescription && AreaDescription
-      }`,
+      } ${AreaDescription && AreaDescription}`,
     })
   );
 };
