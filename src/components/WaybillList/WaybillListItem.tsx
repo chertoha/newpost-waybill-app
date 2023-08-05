@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Item, ItemButton } from "./WaybillList.styled";
 
 interface WaybillListItemProps {
   value: string;
@@ -7,16 +8,16 @@ interface WaybillListItemProps {
 
 const WaybillListItem: FC<WaybillListItemProps> = ({ value, onSearch }) => {
   return (
-    <li>
-      <button
+    <Item>
+      <ItemButton
         type="button"
         onClick={() => {
           onSearch(value);
         }}
       >
         {value}
-      </button>
-    </li>
+      </ItemButton>
+    </Item>
   );
 };
 export default WaybillListItem;

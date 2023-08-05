@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useGetStatusQuery } from "redux/waybill/waybillApi";
+import { InfoItem, InfoItemTitle } from "./WaybillInfo.styled";
 
 interface IWaybillInfoProps {
   searchedWaybill: string;
@@ -29,11 +30,21 @@ const WaybillInfo: FC<IWaybillInfoProps> = ({ searchedWaybill }) => {
   } = data.waybill;
 
   return (
-    <div style={{ backgroundColor: "#e69443" }}>
-      <p>Статус доставки: {status}</p>
-      {warehouseSender && <p>Місце відправлення: {warehouseSender}</p>}
-      {warehouseRecipient && <p>Місце отримання: {warehouseRecipient}</p>}
-    </div>
+    <>
+      <InfoItem>
+        <InfoItemTitle>Статус доставки:</InfoItemTitle> {status}
+      </InfoItem>
+      {warehouseSender && (
+        <InfoItem>
+          <InfoItemTitle>Місце відправлення:</InfoItemTitle> {warehouseSender}
+        </InfoItem>
+      )}
+      {warehouseRecipient && (
+        <InfoItem>
+          <InfoItemTitle>Місце отримання:</InfoItemTitle> {warehouseRecipient}
+        </InfoItem>
+      )}
+    </>
   );
 };
 
