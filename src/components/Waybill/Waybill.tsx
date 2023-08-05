@@ -3,6 +3,7 @@ import WaybillInfo from "components/WaybillInfo";
 import WaybillHistory from "components/WaybillHistory";
 import { useEffect, useState } from "react";
 import { StorageService } from "services/StorageService";
+import { Title, WaybillContainer } from "./Waybill.styled";
 
 const storage = new StorageService<string[]>("waybillHistory");
 
@@ -36,8 +37,8 @@ const Waybill = () => {
   };
 
   return (
-    <div>
-      <h1>Перевірити статус ТТН</h1>
+    <WaybillContainer>
+      <Title>Перевірити ТТН</Title>
       <div style={{ display: "flex" }}>
         <div style={{ backgroundColor: "#727d9e" }}>
           StatusStatusStatusStatusStatus
@@ -50,7 +51,7 @@ const Waybill = () => {
           clearHistory={clearHistory}
         />
       </div>
-    </div>
+    </WaybillContainer>
   );
 };
 
