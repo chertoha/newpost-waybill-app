@@ -16,3 +16,8 @@ export const InfoItem = styled("div")`
 export const InfoItemTitle = styled("span")`
   font-weight: ${(p) => p.theme.fontWeights.bold};
 `;
+
+export const SpinnerWrapper = styled("div")`
+  display: flex;
+  justify-content: center;
+`;

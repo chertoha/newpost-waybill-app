@@ -40,7 +40,7 @@ const WaybillForm: FC<IWaybillFormProps> = ({ searchedWaybill, onSearch }) => {
         name="waybillNumber"
         required
         pattern={waybillValidationPattern}
-        title="Waybill number may contain 10 digits and cannot start from zero"
+        title="Номер ТТН повинен складатися з 10 цифр і не починатися з нуля"
         placeholder="ТТН"
         value={waybillNumber}
         onChange={onWaybillChange}
