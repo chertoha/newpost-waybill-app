@@ -1,5 +1,6 @@
 import { ChangeEvent, FC } from "react";
 import { ISelectItem } from "types/types";
+import { SelectField } from "./Select.styled";
 
 interface ISelectProps {
   list: ISelectItem[];
@@ -15,12 +16,13 @@ const Select: FC<ISelectProps> = ({
   onSelectItemClick,
 }) => {
   return (
-    <label>
-      <input
+    <>
+      <SelectField
         type="text"
         name="select"
         value={value}
         onChange={onSelectChange}
+        placeholder="Населений пункт"
       />
       <ul style={{ backgroundColor: "#7188a8" }}>
         {list.map(({ id, title }) => (
@@ -36,7 +38,7 @@ const Select: FC<ISelectProps> = ({
           </li>
         ))}
       </ul>
-    </label>
+    </>
   );
 };
 

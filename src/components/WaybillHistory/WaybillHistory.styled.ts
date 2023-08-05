@@ -31,22 +31,22 @@ export const TitleWrapper = styled("div")`
   }
 `;
 
-export const Title = styled("h2")`
-  text-align: center;
-  margin-bottom: 8px;
-  font-size: ${(p) => p.theme.fontSizes.m};
-  font-weight: ${(p) => p.theme.fontWeights.bold};
+// export const Title = styled("h2")`
+//   text-align: center;
+//   margin-bottom: 8px;
+//   font-size: ${(p) => p.theme.fontSizes.m};
+//   font-weight: ${(p) => p.theme.fontWeights.bold};
 
-  ${theme.mq.tablet} {
-    margin-bottom: 0;
-    font-size: ${(p) => p.theme.fontSizes.xl};
-    line-height: 1;
-  }
+//   ${theme.mq.tablet} {
+//     margin-bottom: 0;
+//     font-size: ${(p) => p.theme.fontSizes.xl};
+//     line-height: 1;
+//   }
 
-  ${theme.mq.desktop} {
-    font-size: ${(p) => p.theme.fontSizes.xxl};
-  }
-`;
+//   ${theme.mq.desktop} {
+//     font-size: ${(p) => p.theme.fontSizes.xxl};
+//   }
+// `;
 
 export const ClearButton = styled("button")`
   display: block;

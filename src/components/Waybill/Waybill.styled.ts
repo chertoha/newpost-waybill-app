@@ -6,11 +6,11 @@ export const WaybillContainer = styled("div")`
   padding-top: 40px;
 
   ${theme.mq.tablet} {
-    padding-top: 60px;
+    /* padding-top: 60px; */
   }
 
   ${theme.mq.desktop} {
-    padding-top: 80px;
+    /* padding-top: 80px; */
   }
 `;
 

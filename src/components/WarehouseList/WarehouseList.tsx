@@ -1,7 +1,9 @@
+import SubTitle from "components/UIKit/SubTitle";
 import { FC, useEffect, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
+import { Item, List, ListWrapper } from "./WarehouseList.styled";
 
 const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
   "warehouseList"
@@ -60,17 +62,18 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
   // if (!response) return null;
 
   return (
-    <div style={{ backgroundColor: "#1fa3a1" }}>
-      <ul>
+    <ListWrapper>
+      <SubTitle text="Список відділень" />
+      <List>
         {list.map(({ Ref: ref, Description: description }) => (
-          <li key={ref}>{description}</li>
+          <Item key={ref}>{description}</Item>
           // <li>{description}</li>
         ))}
-      </ul>
+      </List>
       <button type="button" onClick={increasePage}>
         Завантажити ще
       </button>
-    </div>
+    </ListWrapper>
   );
 };
 
