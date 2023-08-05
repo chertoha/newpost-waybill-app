@@ -12,6 +12,7 @@ export const StyledHeader = styled("header")`
   border-bottom: 1px solid rgba(99, 99, 99, 0.08);
 
   ${theme.mq.tablet} {
+    padding: 32px 0;
     column-gap: 24px;
     justify-content: flex-start;
     border-bottom: none;
@@ -28,11 +29,11 @@ export const StyledLink = styled(NavLink)`
   font-weight: ${(p) => p.theme.fontWeights.bold};
 
   ${theme.mq.tablet} {
-    font-size: ${(p) => p.theme.fontSizes.l};
+    font-size: ${(p) => p.theme.fontSizes.m};
   }
 
   ${theme.mq.desktop} {
-    font-size: ${(p) => p.theme.fontSizes.xl};
+    font-size: ${(p) => p.theme.fontSizes.l};
   }
 
   &.active,

@@ -43,7 +43,7 @@ export const Field = styled("input")`
 
   ${theme.mq.desktop} {
     width: 519px;
-    font-size: 24px;
+    font-size: ${(p) => p.theme.fontSizes.m};
     /* line-height: 1.2; */
   }
 `;
