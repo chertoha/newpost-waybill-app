@@ -44,7 +44,7 @@ const warehouseListRequest = ({ cityRef, page = "1" }: WarehouseRequest) => ({
   methodProperties: {
     CityRef: cityRef,
     Page: page,
-    Limit: 10,
+    Limit: 20,
   },
 });
 
