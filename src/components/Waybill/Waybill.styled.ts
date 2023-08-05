@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "styles/theme";
-import { visuallyHidden } from "styles/visuallyHidden";
+// import { visuallyHidden } from "styles/visuallyHidden";
 
 export const WaybillContainer = styled("div")`
   padding-top: 40px;
@@ -14,17 +14,17 @@ export const WaybillContainer = styled("div")`
   }
 `;
 
-export const Title = styled("h1")`
-  font-size: ${(p) => p.theme.fontSizes.l};
-  font-weight: ${(p) => p.theme.fontWeights.bold};
-  text-align: center;
+// export const Title = styled("h1")`
+//   font-size: ${(p) => p.theme.fontSizes.l};
+//   font-weight: ${(p) => p.theme.fontWeights.bold};
+//   text-align: center;
 
-  margin-bottom: 24px;
+//   margin-bottom: 24px;
 
-  ${theme.mq.tablet} {
-    ${visuallyHidden()}
-  }
-`;
+//   ${theme.mq.tablet} {
+//     ${visuallyHidden()}
+//   }
+// `;
 
 export const Data = styled("div")`
   ${theme.mq.desktop} {
