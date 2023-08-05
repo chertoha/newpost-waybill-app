@@ -1,12 +1,15 @@
 {
   "files": {
-    "main.js": "/newpost-waybill-app/static/js/main.d130be4f.js",
+    "main.css": "/newpost-waybill-app/static/css/main.b7d0ba3d.css",
+    "main.js": "/newpost-waybill-app/static/js/main.3c195826.js",
     "static/js/787.50ba13f6.chunk.js": "/newpost-waybill-app/static/js/787.50ba13f6.chunk.js",
     "index.html": "/newpost-waybill-app/index.html",
-    "main.d130be4f.js.map": "/newpost-waybill-app/static/js/main.d130be4f.js.map",
+    "main.b7d0ba3d.css.map": "/newpost-waybill-app/static/css/main.b7d0ba3d.css.map",
+    "main.3c195826.js.map": "/newpost-waybill-app/static/js/main.3c195826.js.map",
     "787.50ba13f6.chunk.js.map": "/newpost-waybill-app/static/js/787.50ba13f6.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.d130be4f.js"
+    "static/css/main.b7d0ba3d.css",
+    "static/js/main.3c195826.js"
   ]
 }
