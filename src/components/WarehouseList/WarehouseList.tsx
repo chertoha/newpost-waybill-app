@@ -1,49 +1,80 @@
 import { FC, useEffect, useState } from "react";
-import { useGetWarehousesQuery } from "redux/warehouse/warehouseApi";
+import {
+  useGetWarehousesQuery,
+  useLazyGetWarehousesQuery,
+} from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
 
-// const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
-//   "warehouseList"
-// );
+const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
+  "warehouseList"
+);
 
 interface IWarehouseListProps {
   cityRef: string | null;
 }
 
 const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
-  //   const [list, setList] = useState<IWarehouse[]>(
-  //     () => storage.get()?.list || []
-  //   );
   const [page, setPage] = useState<number>(1);
+  const [list, setList] = useState<IWarehouse[]>(
+    () => storage.get()?.list || []
+  );
+
+  // console.log(list);
 
   const increasePage = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  const { data: response } = useGetWarehousesQuery(
-    { cityRef, page: page.toString() },
-    {
-      skip: cityRef ? false : true,
-    }
-  );
+  // const { data: response } = useGetWarehousesQuery(
+  //   { cityRef, page: page.toString() },
+  // {
+  //   skip: cityRef ? false : true,
+  // }
+  // );
 
-  if (!response) return null;
+  const [fetchWarehouses] = useLazyGetWarehousesQuery();
 
-  //   useEffect(() => {
-  //     const currentPage = storage.get()?.page;
-  //     if (response && currentPage !== page) {
-  //       console.log("page=", page);
-  //       setList((prevList) => [...prevList, ...response.data]);
-  //       storage.set({ page, list: [...list, ...response.data] });
-  //     }
-  //   }, [list, page, response]);
+  useEffect(() => {
+    if (!cityRef) return;
+    if (page === storage.get()?.page) return;
+
+    fetchWarehouses({ cityRef, page: page.toString() }).then(
+      ({ data: response }) => {
+        const warehouses = response?.data;
+        if (warehouses) {
+          setList((prevList) => [...prevList, ...warehouses]);
+          storage.set({ page, list: [...list, ...warehouses] });
+          console.log(response);
+        }
+      }
+    );
+
+    // const currentPage = storage.get()?.page;
+    // if (cityRef && currentPage !== page) {
+    //   fetchWarehouses({ cityRef, page: page.toString() }).then(
+    //     (data) => console.log
+    //   );
+    // }
+  }, [fetchWarehouses, cityRef, page, list]);
+
+  // useEffect(() => {
+  //   const currentPage = storage.get()?.page;
+  //   if (response && currentPage !== page) {
+  //     console.log("page=", page);
+  // setList((prevList) => [...prevList, ...response.data]);
+  // storage.set({ page, list: [...list, ...response.data] });
+  //   }
+  // }, [list, page, response]);
+
+  // if (!response) return null;
 
   return (
     <div style={{ backgroundColor: "#1fa3a1" }}>
       <ul>
-        {response.data.map(({ Ref: ref, Description: description }) => (
+        {list.map(({ Ref: ref, Description: description }) => (
           <li key={ref}>{description}</li>
+          // <li>{description}</li>
         ))}
       </ul>
       <button type="button" onClick={increasePage}>
