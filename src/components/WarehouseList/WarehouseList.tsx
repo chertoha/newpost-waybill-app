@@ -1,8 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import {
-  useGetWarehousesQuery,
-  useLazyGetWarehousesQuery,
-} from "redux/warehouse/warehouseApi";
+import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
 
@@ -49,13 +46,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
         }
       }
     );
-
-    // const currentPage = storage.get()?.page;
-    // if (cityRef && currentPage !== page) {
-    //   fetchWarehouses({ cityRef, page: page.toString() }).then(
-    //     (data) => console.log
-    //   );
-    // }
   }, [fetchWarehouses, cityRef, page, list]);
 
   // useEffect(() => {

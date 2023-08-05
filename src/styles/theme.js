@@ -7,6 +7,7 @@ export const breakpoints = {
 export const theme = {
   colors: {
     accent: "#AF3D8F",
+    activeAccent: "#85306d",
     primaryBackground: "#F3F2F2",
     secondaryBackground: "#D8D6D6",
     primaryText: "#4A4A4A",

@@ -1,5 +1,11 @@
 import WaybillList from "components/WaybillList";
 import { FC } from "react";
+import {
+  ClearButton,
+  HistoryContainer,
+  Title,
+  TitleWrapper,
+} from "./WaybillHistory.styled";
 
 interface IWaybillHistoryProps {
   list: string[];
@@ -12,13 +18,16 @@ const WaybillHistory: FC<IWaybillHistoryProps> = ({
   ...rest
 }) => {
   return (
-    <aside style={{ backgroundColor: "#bc87d6" }}>
-      <h2>Історія</h2>
-      <button type="button" onClick={clearHistory}>
-        Очистити історію
-      </button>
+    <HistoryContainer>
+      <TitleWrapper>
+        <Title>Історія</Title>
+        <ClearButton type="button" onClick={clearHistory}>
+          Очистити історію
+        </ClearButton>
+      </TitleWrapper>
+
       <WaybillList {...rest} />
-    </aside>
+    </HistoryContainer>
   );
 };
 

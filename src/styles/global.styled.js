@@ -64,6 +64,9 @@ a {
 button {
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  border: none;   
+  transition: background-color ${(p) => p.theme.transitions.default}, color ${(
+  p
+) => p.theme.transitions.default} ;
 }
 `;

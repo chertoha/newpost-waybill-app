@@ -1,7 +1,8 @@
 import { FC, useEffect } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Field, StyledForm, Submit } from "./WaybillForm.styled";
 
-// const waybillValidationPattern = "^[1-9][0-9]{13}$";s
+const waybillValidationPattern = "^[1-9][0-9]{13}$";
 
 interface IFormElementsWaybill extends HTMLFormControlsCollection {
   waybillNumber: HTMLInputElement;
@@ -33,22 +34,19 @@ const WaybillForm: FC<IWaybillFormProps> = ({ searchedWaybill, onSearch }) => {
   };
 
   return (
-    <form style={{ backgroundColor: "#cc4e84" }} onSubmit={onSubmit}>
-      <label>
-        {/* Введіть ТТН */}
-        <input
-          type="text"
-          name="waybillNumber"
-          required
-          // pattern={waybillValidationPattern}
-          title="Waybill number may contain 10 digits and cannot start from zero"
-          placeholder="ТТН"
-          value={waybillNumber}
-          onChange={onWaybillChange}
-        />
-      </label>
-      <button type="submit">Отримати статус ТТН</button>
-    </form>
+    <StyledForm onSubmit={onSubmit}>
+      <Field
+        type="text"
+        name="waybillNumber"
+        required
+        pattern={waybillValidationPattern}
+        title="Номер ТТН повинен складатися з 10 цифр і не починатися з нуля"
+        placeholder="ТТН"
+        value={waybillNumber}
+        onChange={onWaybillChange}
+      />
+      <Submit type="submit">Отримати статус ТТН</Submit>
+    </StyledForm>
   );
 };
 
