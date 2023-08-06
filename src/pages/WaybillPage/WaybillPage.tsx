@@ -9,7 +9,7 @@ const WaybillPage = () => {
         <title>Статус ТТН</title>
         <meta name="description" content="Статус ТТН Нової Пошти за номером" />
       </Helmet>
-      <Waybill />;
+      <Waybill />
     </>
   );
 };
