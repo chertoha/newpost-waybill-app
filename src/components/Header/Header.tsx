@@ -1,4 +1,8 @@
 import Container from "components/Container";
+
+import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+
 import { ROUTES } from "router";
 import {
   IconWrapper,
@@ -6,8 +10,6 @@ import {
   StyledLink,
   TextWrapper,
 } from "./Header.styled";
-import { HiOutlineDocumentSearch } from "react-icons/hi";
-import { AiOutlineUnorderedList } from "react-icons/ai";
 
 const Header = () => {
   return (
@@ -16,13 +18,13 @@ const Header = () => {
         <StyledLink to={ROUTES.WAYBILL}>
           <TextWrapper>Перевірити ТТН</TextWrapper>
           <IconWrapper>
-            <HiOutlineDocumentSearch size={32} />
+            <HiOutlineDocumentSearch size={28} />
           </IconWrapper>
         </StyledLink>
         <StyledLink to={ROUTES.WAREHOUSE}>
           <TextWrapper>Список відділень</TextWrapper>
           <IconWrapper>
-            <AiOutlineUnorderedList size={32} />
+            <AiOutlineUnorderedList size={28} />
           </IconWrapper>
         </StyledLink>
       </StyledHeader>

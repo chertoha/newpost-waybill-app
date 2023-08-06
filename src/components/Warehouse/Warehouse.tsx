@@ -1,7 +1,8 @@
+import { ChangeEvent, useState } from "react";
+
 import Select from "components/UIKit/Select";
 import Title from "components/UIKit/Title";
 import WarehouseList from "components/WarehouseList";
-import { ChangeEvent, useState } from "react";
 import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
 import { ISelectItem } from "types/types";
 import { settlementsListTransform } from "utils/settlementsListTransform";
@@ -21,7 +22,6 @@ const Warehouse = () => {
   const onSelectItemClick = (value: ISelectItem) => {
     setSelectValue(value);
     setSelectSearch(value.title);
-    // console.log(id);
   };
 
   if (!response) return null;
@@ -30,8 +30,6 @@ const Warehouse = () => {
     ? settlementsListTransform(response.data)
     : [];
 
-  // console.log(selectValue);
-  // console.log(response);
   return (
     <WarehouseContainer>
       <Title text="Знайти відділення" />

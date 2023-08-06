@@ -11,7 +11,6 @@ export const SelectField = styled(Field)``;
 export const DropDown = styled("ul")`
   position: absolute;
 
-  /* padding: 16px 24px; */
   padding: 0 24px;
   max-height: 400px;
   overflow-y: auto;
@@ -19,7 +18,6 @@ export const DropDown = styled("ul")`
   top: 105%;
 
   background-color: ${(p) => p.theme.colors.secondaryBackground};
-  /* border: 1px solid #d3c8c8; */
   border-top: 32px solid transparent;
   border-bottom: 32px solid transparent;
   border-radius: ${(p) => p.theme.radii.borderRadius.small};
@@ -28,22 +26,11 @@ export const DropDown = styled("ul")`
     top: 90%;
     left: 40px;
     max-width: 500px;
-    /* padding: 32px; */
     padding: 0 32px;
   }
 `;
 
 export const DropDownItem = styled("li")`
-  /* margin-bottom: 24px; */
-  /* 
-  ${theme.mq.desktop} {
-    margin-bottom: 16px;
-  } */
-
-  /* &:last-child {
-    margin-bottom: 0;
-  } */
-
   border-bottom: 1px solid rgba(99, 99, 99, 0.08);
 
   &:last-child {

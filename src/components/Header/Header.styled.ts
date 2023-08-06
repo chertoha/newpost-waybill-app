@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { theme } from "styles/theme";
-import styled from "styled-components";
 
 export const StyledHeader = styled("header")`
   padding: 16px 0;
@@ -8,7 +8,7 @@ export const StyledHeader = styled("header")`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  column-gap: 16px;
+  column-gap: 12px;
   border-bottom: 1px solid rgba(99, 99, 99, 0.08);
 
   ${theme.mq.tablet} {

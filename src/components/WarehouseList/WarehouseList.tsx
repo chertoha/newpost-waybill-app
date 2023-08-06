@@ -1,6 +1,7 @@
+import { FC, useEffect, useRef, useState } from "react";
+
 import Spinner from "components/UIKit/Spinner";
 import SubTitle from "components/UIKit/SubTitle";
-import { FC, useEffect, useRef, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
@@ -40,7 +41,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
         cityRef: requestedRef,
         page: page.toString(),
       });
-      // console.log(response);
 
       const info = response?.info;
       const count = info?.totalCount;
@@ -78,7 +78,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       <List>
         {list.map(({ Ref: ref, Description: description }) => (
           <Item key={ref}>{description}</Item>
-          // <Item>{description}</Item>
         ))}
       </List>
 

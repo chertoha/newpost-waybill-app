@@ -1,6 +1,7 @@
+import { FC } from "react";
+
 import SubTitle from "components/UIKit/SubTitle";
 import WaybillList from "components/WaybillList";
-import { FC } from "react";
 import {
   ClearButton,
   HistoryContainer,

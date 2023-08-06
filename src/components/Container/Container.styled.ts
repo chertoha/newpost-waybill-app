@@ -8,15 +8,9 @@ export const StyledContainer = styled("div")`
   padding-right: 16px;
   padding-left: 16px;
 
-  /* background-color: tomato; */
-
   ${theme.mq.mobileOnly} {
     max-width: 480px;
   }
-
-  /* ${theme.mq.mobileOnly} {
-    max-width: ${(p) => p.theme.breakpoints.mobile};
-  } */
 
   ${theme.mq.tablet} {
     width: ${(p) => p.theme.breakpoints.tablet};
