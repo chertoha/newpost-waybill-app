@@ -17,11 +17,14 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
   // const [currentCityRef, setCurrentCityRef] = useState<string | null>(
   //   () => cityRef
   // );
+
+  // const [request, setRequest] = useState<string | null>()
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IWarehouse[]>(
     () => storage.get()?.list || []
   );
 
+  const currentCityRef = useRef<string | null>(null);
   // useEffect(() => {
   //   if (cityRef !== currentCityRef) {
   //     setPage(1);
@@ -38,21 +41,43 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
   const [fetchWarehouses] = useLazyGetWarehousesQuery();
 
   useEffect(() => {
-    if (!cityRef) return;
-    if (page === storage.get()?.page) return;
-    // if (cityRef === currentCityRef) return;
+    const fetchList = async (requestedRef: string, page: number) => {
+      const { data: response } = await fetchWarehouses({
+        cityRef: requestedRef,
+        page: page.toString(),
+      });
 
-    fetchWarehouses({
-      cityRef,
-      page: page.toString(),
-    }).then(({ data: response }) => {
       const warehouses = response?.data;
       if (warehouses) {
         setList((prevList) => [...prevList, ...warehouses]);
         storage.set({ page, list: [...list, ...warehouses] });
-        console.log(response);
       }
-    });
+    };
+
+    if (!cityRef) return;
+
+    if (currentCityRef.current !== cityRef) {
+      currentCityRef.current = cityRef;
+      setPage(1);
+      setList([]);
+      storage.remove();
+
+      // fetchList(cityRef, 1);
+
+      return;
+    }
+
+    const storagePage = storage.get()?.page;
+
+    console.log("storagePage", storagePage);
+
+    if (page === storagePage && cityRef === currentCityRef.current) {
+      return;
+    }
+
+    fetchList(cityRef, page);
+
+    //end
   }, [fetchWarehouses, cityRef, page, list]);
 
   return (
@@ -61,6 +86,7 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       <List>
         {list.map(({ Ref: ref, Description: description }) => (
           <Item key={ref}>{description}</Item>
+          // <Item>{description}</Item>
         ))}
       </List>
       <LoadMoreBtn type="button" onClick={increasePage}>
