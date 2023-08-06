@@ -47,6 +47,7 @@ export type WarehouseResponse = {
   errors: string[];
   warnings: string[];
   success: boolean;
+  info?: { totalCount: number };
 };
 
 export type WarehouseRequest = {

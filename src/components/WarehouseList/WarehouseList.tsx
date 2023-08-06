@@ -14,25 +14,12 @@ interface IWarehouseListProps {
 }
 
 const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
-  // const [currentCityRef, setCurrentCityRef] = useState<string | null>(
-  //   () => cityRef
-  // );
-
-  // const [request, setRequest] = useState<string | null>()
   const [page, setPage] = useState<number>(1);
   const [list, setList] = useState<IWarehouse[]>(
     () => storage.get()?.list || []
   );
-
+  const [totalCount, setTotalCount] = useState<number>(0);
   const currentCityRef = useRef<string | null>(null);
-  // useEffect(() => {
-  //   if (cityRef !== currentCityRef) {
-  //     setPage(1);
-  //     setList([]);
-  //     storage.remove();
-  //     setCurrentCityRef(cityRef);
-  //   }
-  // }, [cityRef, currentCityRef]);
 
   const increasePage = () => {
     setPage((prevState) => prevState + 1);
@@ -46,12 +33,17 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
         cityRef: requestedRef,
         page: page.toString(),
       });
+      // console.log(response);
+
+      const info = response?.info;
+      const count = info?.totalCount;
+      if (!count) return;
+      setTotalCount(count);
 
       const warehouses = response?.data;
-      if (warehouses) {
-        setList((prevList) => [...prevList, ...warehouses]);
-        storage.set({ page, list: [...list, ...warehouses] });
-      }
+      if (!warehouses) return;
+      setList((prevList) => [...prevList, ...warehouses]);
+      storage.set({ page, list: [...list, ...warehouses] });
     };
 
     if (!cityRef) return;
@@ -61,25 +53,19 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       setPage(1);
       setList([]);
       storage.remove();
-
-      // fetchList(cityRef, 1);
-
       return;
     }
 
     const storagePage = storage.get()?.page;
-
-    console.log("storagePage", storagePage);
 
     if (page === storagePage && cityRef === currentCityRef.current) {
       return;
     }
 
     fetchList(cityRef, page);
-
-    //end
   }, [fetchWarehouses, cityRef, page, list]);
 
+  console.log(list);
   return (
     <ListWrapper>
       <SubTitle text="Список відділень" />
@@ -89,9 +75,12 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
           // <Item>{description}</Item>
         ))}
       </List>
-      <LoadMoreBtn type="button" onClick={increasePage}>
-        Завантажити ще
-      </LoadMoreBtn>
+
+      {cityRef && list.length !== totalCount && (
+        <LoadMoreBtn type="button" onClick={increasePage}>
+          Завантажити ще
+        </LoadMoreBtn>
+      )}
     </ListWrapper>
   );
 };
