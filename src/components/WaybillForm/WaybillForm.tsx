@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Field, StyledForm, Submit } from "./WaybillForm.styled";
+import { StyledForm, Submit, WaybillField } from "./WaybillForm.styled";
 
 const waybillValidationPattern = "^[1-9][0-9]{13}$";
 
@@ -35,7 +35,7 @@ const WaybillForm: FC<IWaybillFormProps> = ({ searchedWaybill, onSearch }) => {
 
   return (
     <StyledForm onSubmit={onSubmit}>
-      <Field
+      <WaybillField
         type="text"
         name="waybillNumber"
         required

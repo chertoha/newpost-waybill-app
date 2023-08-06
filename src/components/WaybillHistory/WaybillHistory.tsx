@@ -1,9 +1,9 @@
+import SubTitle from "components/UIKit/SubTitle";
 import WaybillList from "components/WaybillList";
 import { FC } from "react";
 import {
   ClearButton,
   HistoryContainer,
-  Title,
   TitleWrapper,
 } from "./WaybillHistory.styled";
 
@@ -20,7 +20,7 @@ const WaybillHistory: FC<IWaybillHistoryProps> = ({
   return (
     <HistoryContainer>
       <TitleWrapper>
-        <Title>Історія</Title>
+        <SubTitle text="Історія" />
         <ClearButton type="button" onClick={clearHistory}>
           Очистити історію
         </ClearButton>

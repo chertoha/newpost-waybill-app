@@ -3,7 +3,8 @@ import WaybillInfo from "components/WaybillInfo";
 import WaybillHistory from "components/WaybillHistory";
 import { useEffect, useState } from "react";
 import { StorageService } from "services/StorageService";
-import { Data, InfoWrapper, Title, WaybillContainer } from "./Waybill.styled";
+import { Data, InfoWrapper, WaybillContainer } from "./Waybill.styled";
+import Title from "components/UIKit/Title";
 
 const storage = new StorageService<string[]>("waybillHistory");
 
@@ -38,7 +39,7 @@ const Waybill = () => {
 
   return (
     <WaybillContainer>
-      <Title>Перевірити ТТН</Title>
+      <Title text="Перевірити ТТН" />
       <WaybillForm onSearch={onSearch} searchedWaybill={searchedWaybill} />
 
       <Data>

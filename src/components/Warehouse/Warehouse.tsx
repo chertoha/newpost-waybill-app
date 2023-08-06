@@ -1,9 +1,11 @@
 import Select from "components/UIKit/Select";
+import Title from "components/UIKit/Title";
 import WarehouseList from "components/WarehouseList";
 import { ChangeEvent, useState } from "react";
 import { useGetSettlementsQuery } from "redux/warehouse/warehouseApi";
 import { ISelectItem } from "types/types";
 import { settlementsListTransform } from "utils/settlementsListTransform";
+import { SelectWrapper, WarehouseContainer } from "./Warehouse.styled";
 
 const Warehouse = () => {
   const [selectSearch, setSelectSearch] = useState<string>("");
@@ -31,18 +33,18 @@ const Warehouse = () => {
   // console.log(selectValue);
   // console.log(response);
   return (
-    <div>
-      <h1>Список відділень</h1>
-      <div style={{ display: "flex" }}>
+    <WarehouseContainer>
+      <Title text="Знайти відділення" />
+      <SelectWrapper>
         <Select
           list={settlements}
           value={selectSearch}
           onSelectChange={onSelectChange}
           onSelectItemClick={onSelectItemClick}
         />
-        <WarehouseList cityRef={selectValue ? selectValue.id : null} />
-      </div>
-    </div>
+      </SelectWrapper>
+      <WarehouseList cityRef={selectValue ? selectValue.id : null} />
+    </WarehouseContainer>
   );
 };
 

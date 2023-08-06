@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Field } from "components/UIKit/Field/Field.styled";
 import { theme } from "styles/theme";
 
 export const StyledForm = styled("form")`
@@ -18,33 +19,16 @@ export const StyledForm = styled("form")`
   }
 `;
 
-export const Field = styled("input")`
-  display: block;
-  width: 100%;
-  padding: 13px 24px;
+export const WaybillField = styled(Field)`
   margin-bottom: 16px;
-
-  font-size: ${(p) => p.theme.fontSizes.s};
-  font-weight: ${(p) => p.theme.fontWeights.medium};
-  line-height: 1.25;
-  color: #968787;
-
-  border: 1px solid #d3c8c8;
-  border-radius: ${(p) => p.theme.radii.borderRadius.small};
-  background-color: ${(p) => p.theme.colors.primaryBackground};
 
   ${theme.mq.tablet} {
     width: 461px;
-    padding: 13px 32px;
     margin-bottom: 0;
-    font-size: ${(p) => p.theme.fontSizes.s};
-    /* line-height: 1.2; */
   }
 
   ${theme.mq.desktop} {
     width: 519px;
-    font-size: 24px;
-    /* line-height: 1.2; */
   }
 `;
 
