@@ -8,13 +8,6 @@ import Title from "components/UIKit/Title";
 
 const storage = new StorageService<string[]>("waybillHistory");
 
-// const testInitialHistory = [
-//   "20700155923660",
-//   "59000988138658",
-//   "20450727666448",
-//   "11111111111111",
-// ];
-
 const Waybill = () => {
   const [searchedWaybill, setSearchedWaybill] = useState<string>("");
   const [historyList, setHistoryList] = useState<string[]>(

@@ -40,7 +40,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
         cityRef: requestedRef,
         page: page.toString(),
       });
-      // console.log(response);
 
       const info = response?.info;
       const count = info?.totalCount;

@@ -12,8 +12,6 @@ const WaybillInfo: FC<IWaybillInfoProps> = ({ searchedWaybill }) => {
     skip: searchedWaybill ? false : true,
   });
 
-  console.log(data);
-
   if (!data) return null;
 
   if (isFetching) {

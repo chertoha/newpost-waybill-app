@@ -57,7 +57,6 @@ export const waybillApi = createApi({
         response: WaybillStatusDefaultResponse
       ): WaybillStatus => {
         const { success, data, errors, warnings } = response;
-        // console.log(response);
         return {
           success,
           waybill: data[0],

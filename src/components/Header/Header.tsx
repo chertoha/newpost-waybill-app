@@ -16,13 +16,13 @@ const Header = () => {
         <StyledLink to={ROUTES.WAYBILL}>
           <TextWrapper>Перевірити ТТН</TextWrapper>
           <IconWrapper>
-            <HiOutlineDocumentSearch size={24} />
+            <HiOutlineDocumentSearch size={28} />
           </IconWrapper>
         </StyledLink>
         <StyledLink to={ROUTES.WAREHOUSE}>
           <TextWrapper>Список відділень</TextWrapper>
           <IconWrapper>
-            <AiOutlineUnorderedList size={24} />
+            <AiOutlineUnorderedList size={28} />
           </IconWrapper>
         </StyledLink>
       </StyledHeader>

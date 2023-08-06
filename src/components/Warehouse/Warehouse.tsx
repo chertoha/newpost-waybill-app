@@ -21,7 +21,6 @@ const Warehouse = () => {
   const onSelectItemClick = (value: ISelectItem) => {
     setSelectValue(value);
     setSelectSearch(value.title);
-    // console.log(id);
   };
 
   if (!response) return null;
@@ -30,8 +29,6 @@ const Warehouse = () => {
     ? settlementsListTransform(response.data)
     : [];
 
-  // console.log(selectValue);
-  // console.log(response);
   return (
     <WarehouseContainer>
       <Title text="Знайти відділення" />
