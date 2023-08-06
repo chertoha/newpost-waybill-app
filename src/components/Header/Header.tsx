@@ -15,13 +15,13 @@ const Header = () => {
   return (
     <Container>
       <StyledHeader>
-        <StyledLink to={ROUTES.WAYBILL}>
+        <StyledLink to={ROUTES.WAYBILL} aria-label="Перевірити ТТН">
           <TextWrapper>Перевірити ТТН</TextWrapper>
           <IconWrapper>
             <HiOutlineDocumentSearch size={28} />
           </IconWrapper>
         </StyledLink>
-        <StyledLink to={ROUTES.WAREHOUSE}>
+        <StyledLink to={ROUTES.WAREHOUSE} aria-label="Список відділень">
           <TextWrapper>Список відділень</TextWrapper>
           <IconWrapper>
             <AiOutlineUnorderedList size={28} />
