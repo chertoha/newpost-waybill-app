@@ -1,6 +1,12 @@
 import { ChangeEvent, FC } from "react";
 import { ISelectItem } from "types/types";
-import { SelectField } from "./Select.styled";
+import {
+  DropDown,
+  DropDownBtn,
+  DropDownItem,
+  SelectContainer,
+  SelectField,
+} from "./Select.styled";
 
 interface ISelectProps {
   list: ISelectItem[];
@@ -16,7 +22,7 @@ const Select: FC<ISelectProps> = ({
   onSelectItemClick,
 }) => {
   return (
-    <>
+    <SelectContainer>
       <SelectField
         type="text"
         name="select"
@@ -24,21 +30,21 @@ const Select: FC<ISelectProps> = ({
         onChange={onSelectChange}
         placeholder="Населений пункт"
       />
-      <ul style={{ backgroundColor: "#7188a8" }}>
+      <DropDown>
         {list.map(({ id, title }) => (
-          <li key={id}>
-            <button
+          <DropDownItem key={id}>
+            <DropDownBtn
               type="button"
               onClick={() => {
                 onSelectItemClick({ id, title });
               }}
             >
               {title}
-            </button>
-          </li>
+            </DropDownBtn>
+          </DropDownItem>
         ))}
-      </ul>
-    </>
+      </DropDown>
+    </SelectContainer>
   );
 };
 

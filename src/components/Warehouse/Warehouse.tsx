@@ -42,8 +42,8 @@ const Warehouse = () => {
           onSelectChange={onSelectChange}
           onSelectItemClick={onSelectItemClick}
         />
-        <WarehouseList cityRef={selectValue ? selectValue.id : null} />
       </SelectWrapper>
+      <WarehouseList cityRef={selectValue ? selectValue.id : null} />
     </WarehouseContainer>
   );
 };

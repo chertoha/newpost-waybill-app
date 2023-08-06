@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
-import { Item, List, ListWrapper } from "./WarehouseList.styled";
+import { Item, List, ListWrapper, LoadMoreBtn } from "./WarehouseList.styled";
 
 const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
   "warehouseList"
@@ -67,12 +67,11 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       <List>
         {list.map(({ Ref: ref, Description: description }) => (
           <Item key={ref}>{description}</Item>
-          // <li>{description}</li>
         ))}
       </List>
-      <button type="button" onClick={increasePage}>
+      <LoadMoreBtn type="button" onClick={increasePage}>
         Завантажити ще
-      </button>
+      </LoadMoreBtn>
     </ListWrapper>
   );
 };
