@@ -8,7 +8,7 @@ export const StyledHeader = styled("header")`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  column-gap: 16px;
+  column-gap: 8px;
   border-bottom: 1px solid rgba(99, 99, 99, 0.08);
 
   ${theme.mq.tablet} {

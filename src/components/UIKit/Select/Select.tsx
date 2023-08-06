@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC } from "react";
 import { ISelectItem } from "types/types";
 import {
   DropDown,
@@ -21,8 +21,6 @@ const Select: FC<ISelectProps> = ({
   onSelectChange,
   onSelectItemClick,
 }) => {
-  // const [isOpen, setIsOpen] = useState<boolean>(false);
-
   return (
     <SelectContainer>
       <SelectField
@@ -40,7 +38,6 @@ const Select: FC<ISelectProps> = ({
                 type="button"
                 onClick={() => {
                   onSelectItemClick({ id, title });
-                  // setIsOpen(false);
                 }}
               >
                 {title}
