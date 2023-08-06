@@ -1,5 +1,6 @@
 import Warehouse from "components/Warehouse/Warehouse";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet";
 
 const WarehousePage = () => {
   return (

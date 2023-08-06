@@ -1,5 +1,6 @@
 import Waybill from "components/Waybill";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet";
 
 const WaybillPage = () => {
   return (
