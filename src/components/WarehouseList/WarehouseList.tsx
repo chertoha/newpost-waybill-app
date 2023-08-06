@@ -77,7 +77,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       <List>
         {list.map(({ Ref: ref, Description: description }) => (
           <Item key={ref}>{description}</Item>
-          // <Item>{description}</Item>
         ))}
       </List>
 
