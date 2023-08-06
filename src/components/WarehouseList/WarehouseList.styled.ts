@@ -52,3 +52,8 @@ export const LoadMoreBtn = styled("button")`
     font-size: ${(p) => p.theme.fontSizes.l};
   }
 `;
+
+export const SpinnerWrapper = styled("div")`
+  display: flex;
+  justify-content: center;
+`;

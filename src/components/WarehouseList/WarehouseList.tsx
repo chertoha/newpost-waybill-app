@@ -1,9 +1,16 @@
+import Spinner from "components/UIKit/Spinner";
 import SubTitle from "components/UIKit/SubTitle";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
-import { Item, List, ListWrapper, LoadMoreBtn } from "./WarehouseList.styled";
+import {
+  Item,
+  List,
+  ListWrapper,
+  LoadMoreBtn,
+  SpinnerWrapper,
+} from "./WarehouseList.styled";
 
 const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
   "warehouseList"
@@ -18,48 +25,52 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
   const [list, setList] = useState<IWarehouse[]>(
     () => storage.get()?.list || []
   );
-
-  // console.log(list);
+  const [totalCount, setTotalCount] = useState<number>(0);
+  const currentCityRef = useRef<string | null>(null);
 
   const increasePage = () => {
     setPage((prevState) => prevState + 1);
   };
 
-  // const { data: response } = useGetWarehousesQuery(
-  //   { cityRef, page: page.toString() },
-  // {
-  //   skip: cityRef ? false : true,
-  // }
-  // );
-
-  const [fetchWarehouses] = useLazyGetWarehousesQuery();
+  const [fetchWarehouses, { isFetching }] = useLazyGetWarehousesQuery();
 
   useEffect(() => {
+    const fetchList = async (requestedRef: string, page: number) => {
+      const { data: response } = await fetchWarehouses({
+        cityRef: requestedRef,
+        page: page.toString(),
+      });
+      // console.log(response);
+
+      const info = response?.info;
+      const count = info?.totalCount;
+      if (!count) return;
+      setTotalCount(count);
+
+      const warehouses = response?.data;
+      if (!warehouses) return;
+      setList((prevList) => [...prevList, ...warehouses]);
+      storage.set({ page, list: [...list, ...warehouses] });
+    };
+
     if (!cityRef) return;
-    if (page === storage.get()?.page) return;
 
-    fetchWarehouses({ cityRef, page: page.toString() }).then(
-      ({ data: response }) => {
-        const warehouses = response?.data;
-        if (warehouses) {
-          setList((prevList) => [...prevList, ...warehouses]);
-          storage.set({ page, list: [...list, ...warehouses] });
-          console.log(response);
-        }
-      }
-    );
+    if (currentCityRef.current !== cityRef) {
+      currentCityRef.current = cityRef;
+      setPage(1);
+      setList([]);
+      storage.remove();
+      return;
+    }
+
+    const storagePage = storage.get()?.page;
+
+    if (page === storagePage && cityRef === currentCityRef.current) {
+      return;
+    }
+
+    fetchList(cityRef, page);
   }, [fetchWarehouses, cityRef, page, list]);
-
-  // useEffect(() => {
-  //   const currentPage = storage.get()?.page;
-  //   if (response && currentPage !== page) {
-  //     console.log("page=", page);
-  // setList((prevList) => [...prevList, ...response.data]);
-  // storage.set({ page, list: [...list, ...response.data] });
-  //   }
-  // }, [list, page, response]);
-
-  // if (!response) return null;
 
   return (
     <ListWrapper>
@@ -67,11 +78,21 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
       <List>
         {list.map(({ Ref: ref, Description: description }) => (
           <Item key={ref}>{description}</Item>
+          // <Item>{description}</Item>
         ))}
       </List>
-      <LoadMoreBtn type="button" onClick={increasePage}>
-        Завантажити ще
-      </LoadMoreBtn>
+
+      {cityRef &&
+        list.length !== totalCount &&
+        (isFetching ? (
+          <SpinnerWrapper>
+            <Spinner />
+          </SpinnerWrapper>
+        ) : (
+          <LoadMoreBtn type="button" onClick={increasePage}>
+            Завантажити ще
+          </LoadMoreBtn>
+        ))}
     </ListWrapper>
   );
 };

@@ -18,18 +18,6 @@ const waybillDataRequest = (number: string) => ({
   },
 });
 
-// const warehouseSettlementsRequest = (search: string) => ({
-//   apiKey: API_KEY,
-//   modelName: "Address",
-//   calledMethod: "getSettlements",
-//   methodProperties: {
-//     Page: "1",
-//     Warehouse: "1",
-//     FindByString: search,
-//     Limit: "20",
-//   },
-// });
-
 const warehouseSettlementsRequest = (search: string) => ({
   apiKey: API_KEY,
   modelName: "Address",

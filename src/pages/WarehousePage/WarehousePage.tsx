@@ -1,4 +1,4 @@
-import Warehouse from "components/Warehouse";
+import Warehouse from "components/Warehouse/Warehouse";
 
 const WarehousePage = () => {
   return <Warehouse />;

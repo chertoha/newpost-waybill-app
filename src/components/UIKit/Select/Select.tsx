@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { ISelectItem } from "types/types";
 import {
   DropDown,
@@ -21,6 +21,8 @@ const Select: FC<ISelectProps> = ({
   onSelectChange,
   onSelectItemClick,
 }) => {
+  // const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <SelectContainer>
       <SelectField
@@ -30,20 +32,23 @@ const Select: FC<ISelectProps> = ({
         onChange={onSelectChange}
         placeholder="Населений пункт"
       />
-      <DropDown>
-        {list.map(({ id, title }) => (
-          <DropDownItem key={id}>
-            <DropDownBtn
-              type="button"
-              onClick={() => {
-                onSelectItemClick({ id, title });
-              }}
-            >
-              {title}
-            </DropDownBtn>
-          </DropDownItem>
-        ))}
-      </DropDown>
+      {list.length > 0 && (
+        <DropDown>
+          {list.map(({ id, title }) => (
+            <DropDownItem key={id}>
+              <DropDownBtn
+                type="button"
+                onClick={() => {
+                  onSelectItemClick({ id, title });
+                  // setIsOpen(false);
+                }}
+              >
+                {title}
+              </DropDownBtn>
+            </DropDownItem>
+          ))}
+        </DropDown>
+      )}
     </SelectContainer>
   );
 };
