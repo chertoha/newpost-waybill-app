@@ -65,7 +65,6 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
     fetchList(cityRef, page);
   }, [fetchWarehouses, cityRef, page, list]);
 
-  console.log(list);
   return (
     <ListWrapper>
       <SubTitle text="Список відділень" />
