@@ -1,4 +1,8 @@
 import Container from "components/Container";
+
+import { HiOutlineDocumentSearch } from "react-icons/hi";
+import { AiOutlineUnorderedList } from "react-icons/ai";
+
 import { ROUTES } from "router";
 import {
   IconWrapper,
@@ -6,8 +10,6 @@ import {
   StyledLink,
   TextWrapper,
 } from "./Header.styled";
-import { HiOutlineDocumentSearch } from "react-icons/hi";
-import { AiOutlineUnorderedList } from "react-icons/ai";
 
 const Header = () => {
   return (

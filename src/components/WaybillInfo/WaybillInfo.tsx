@@ -1,5 +1,6 @@
-import Spinner from "components/UIKit/Spinner";
 import { FC } from "react";
+
+import Spinner from "components/UIKit/Spinner";
 import { useGetStatusQuery } from "redux/waybill/waybillApi";
 import { InfoItem, InfoItemTitle, SpinnerWrapper } from "./WaybillInfo.styled";
 

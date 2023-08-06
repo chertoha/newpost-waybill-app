@@ -1,7 +1,8 @@
 import axios from "axios";
-import { WarehouseRequest } from "types/types";
-import type { BaseQueryFn } from "@reduxjs/toolkit/query";
 import type { AxiosRequestConfig, AxiosError } from "axios";
+
+import type { BaseQueryFn } from "@reduxjs/toolkit/query";
+import { WarehouseRequest } from "types/types";
 
 const BASE_URL = process.env.REACT_APP_NP_API_ENTRY_POINT;
 const API_KEY = process.env.REACT_APP_NP_API_KEY;

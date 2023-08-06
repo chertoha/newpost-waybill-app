@@ -1,10 +1,11 @@
+import { useEffect, useState } from "react";
+
+import Title from "components/UIKit/Title";
 import WaybillForm from "components/WaybillForm";
 import WaybillInfo from "components/WaybillInfo";
 import WaybillHistory from "components/WaybillHistory";
-import { useEffect, useState } from "react";
 import { StorageService } from "services/StorageService";
 import { Data, InfoWrapper, WaybillContainer } from "./Waybill.styled";
-import Title from "components/UIKit/Title";
 
 const storage = new StorageService<string[]>("waybillHistory");
 

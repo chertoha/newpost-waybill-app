@@ -1,6 +1,6 @@
+import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { theme } from "styles/theme";
-import styled from "styled-components";
 
 export const StyledHeader = styled("header")`
   padding: 16px 0;

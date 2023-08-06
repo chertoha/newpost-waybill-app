@@ -1,6 +1,7 @@
+import { FC, useEffect, useRef, useState } from "react";
+
 import Spinner from "components/UIKit/Spinner";
 import SubTitle from "components/UIKit/SubTitle";
-import { FC, useEffect, useRef, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
