@@ -1,15 +1,19 @@
 {
   "files": {
     "main.css": "/newpost-waybill-app/static/css/main.b7d0ba3d.css",
-    "main.js": "/newpost-waybill-app/static/js/main.9f776f89.js",
+    "main.js": "/newpost-waybill-app/static/js/main.e9feedbd.js",
+    "static/js/587.ade3df3e.chunk.js": "/newpost-waybill-app/static/js/587.ade3df3e.chunk.js",
+    "static/js/215.733fc7cd.chunk.js": "/newpost-waybill-app/static/js/215.733fc7cd.chunk.js",
     "static/js/787.50ba13f6.chunk.js": "/newpost-waybill-app/static/js/787.50ba13f6.chunk.js",
     "index.html": "/newpost-waybill-app/index.html",
     "main.b7d0ba3d.css.map": "/newpost-waybill-app/static/css/main.b7d0ba3d.css.map",
-    "main.9f776f89.js.map": "/newpost-waybill-app/static/js/main.9f776f89.js.map",
+    "main.e9feedbd.js.map": "/newpost-waybill-app/static/js/main.e9feedbd.js.map",
+    "587.ade3df3e.chunk.js.map": "/newpost-waybill-app/static/js/587.ade3df3e.chunk.js.map",
+    "215.733fc7cd.chunk.js.map": "/newpost-waybill-app/static/js/215.733fc7cd.chunk.js.map",
     "787.50ba13f6.chunk.js.map": "/newpost-waybill-app/static/js/787.50ba13f6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b7d0ba3d.css",
-    "static/js/main.9f776f89.js"
+    "static/js/main.e9feedbd.js"
   ]
 }
