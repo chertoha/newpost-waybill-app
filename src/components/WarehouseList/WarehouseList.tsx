@@ -1,9 +1,16 @@
+import Spinner from "components/UIKit/Spinner";
 import SubTitle from "components/UIKit/SubTitle";
 import { FC, useEffect, useRef, useState } from "react";
 import { useLazyGetWarehousesQuery } from "redux/warehouse/warehouseApi";
 import { StorageService } from "services/StorageService";
 import { IWarehouse } from "types/types";
-import { Item, List, ListWrapper, LoadMoreBtn } from "./WarehouseList.styled";
+import {
+  Item,
+  List,
+  ListWrapper,
+  LoadMoreBtn,
+  SpinnerWrapper,
+} from "./WarehouseList.styled";
 
 const storage = new StorageService<{ page: number; list: IWarehouse[] }>(
   "warehouseList"
@@ -25,7 +32,7 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
     setPage((prevState) => prevState + 1);
   };
 
-  const [fetchWarehouses] = useLazyGetWarehousesQuery();
+  const [fetchWarehouses, { isFetching }] = useLazyGetWarehousesQuery();
 
   useEffect(() => {
     const fetchList = async (requestedRef: string, page: number) => {
@@ -75,11 +82,17 @@ const WarehouseList: FC<IWarehouseListProps> = ({ cityRef }) => {
         ))}
       </List>
 
-      {cityRef && list.length !== totalCount && (
-        <LoadMoreBtn type="button" onClick={increasePage}>
-          Завантажити ще
-        </LoadMoreBtn>
-      )}
+      {cityRef &&
+        list.length !== totalCount &&
+        (isFetching ? (
+          <SpinnerWrapper>
+            <Spinner />
+          </SpinnerWrapper>
+        ) : (
+          <LoadMoreBtn type="button" onClick={increasePage}>
+            Завантажити ще
+          </LoadMoreBtn>
+        ))}
     </ListWrapper>
   );
 };
